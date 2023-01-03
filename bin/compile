@@ -22,6 +22,7 @@ install_system_deps() {
 	SUPPORTED_BROWSERS=${PLAYWRIGHT_BUILDPACK_BROWSERS:-chromium,firefox,webkit}
 	echo "Installing Playwright dependencies (env: PLAYWRIGHT_BUILDPACK_BROWSERS) for $SUPPORTED_BROWSERS."
 
+	cd "$BUILD_DIR"
 	yarn run playwright install --with-deps $SUPPORTED_BROWSERS
 }
 
