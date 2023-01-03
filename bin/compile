@@ -23,6 +23,11 @@ install_system_deps() {
 	echo "Installing Playwright dependencies (env: PLAYWRIGHT_BUILDPACK_BROWSERS) for $SUPPORTED_BROWSERS."
 
 	cd "$BUILD_DIR"
+
+	# fake sudo hack because Playwright insists on using sudo
+	echo 'sh -c "$4"' > node_modules/.bin/sudo
+	chmod +x node_modules/.bin/sudo
+
 	yarn run playwright install --with-deps $SUPPORTED_BROWSERS
 }
 
