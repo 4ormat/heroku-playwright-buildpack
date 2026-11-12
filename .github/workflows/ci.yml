@@ -4,18 +4,24 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+permissions:
+  contents: read
 jobs:
-  test_ubuntu_18:
-    runs-on: ubuntu-18.04
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - stack: heroku-22
+          runner: ubuntu-22.04
+        - stack: heroku-24
+          runner: ubuntu-24.04
+    name: test (${{ matrix.stack }})
+    runs-on: ${{ matrix.runner }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
     - run: bash test/run.sh
       env:
-        STACK: heroku-18 
-  test_ubuntu_20:
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: actions/checkout@v2
-    - run: bash test/run.sh
-      env:
-        STACK: heroku-20 
+        STACK: ${{ matrix.stack }}
