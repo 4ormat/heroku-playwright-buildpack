@@ -6,7 +6,7 @@ workflows:
     '.github/workflows/actions-lock.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
     '.github/workflows/ci.yml':
-        - 'actions/checkout@v2'
+        - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
     '.github/workflows/zizmor.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
         - 'zizmorcore/zizmor-action@45d7276c9ca790aabd705e31ca99c6185c3e76dd'
@@ -14,11 +14,6 @@ dependencies:
     'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1':
         ref: 'v7.0.1'
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
-        owner_id: 44036562
-        repo_id: 197814629
-    'actions/checkout@v2':
-        ref: 'v2'
-        commit: 'sha1-0717577d45739eb3c851188b29f50ed6c0b2194e'
         owner_id: 44036562
         repo_id: 197814629
     'github/codeql-action@9b3254085494b55a0f7c4c2b3d2d52cc712ce370':
